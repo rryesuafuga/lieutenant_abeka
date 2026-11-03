@@ -1,0 +1,5 @@
+# Tested with: numpy 2.5.3, opencv-contrib-python-headless 5.0.0.93, Pillow 12.3.0, ffmpeg 6.1
+# (ffmpeg / ffprobe must also be installed and on PATH)
+numpy>=1.26
+opencv-contrib-python-headless>=4.8
+Pillow>=10.1

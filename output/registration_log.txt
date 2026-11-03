@@ -1,0 +1,26 @@
+Source: thief_video.mp4  SHA-256 045a217d3d21e1356980fa13ee2ab95426dfe58acbec3240c8d96f209bc172c1  frames 839
+View A: reference frame 381, face centre (535, 185)
+  frame 376: NCC 0.985  ECC rho 0.9926  integer shift (0, 2)  affine t=(-0.85,-0.48) A=[1.006 +0.017; -0.010 1.015]
+  frame 377: NCC 0.988  ECC rho 0.9955  integer shift (0, 1)  affine t=(-0.46,-0.79) A=[0.999 +0.011; -0.006 1.018]
+  frame 378: NCC 0.990  ECC rho 0.9963  integer shift (0, 0)  affine t=(-0.82,-0.03) A=[1.009 +0.010; -0.000 1.009]
+  frame 379: NCC 0.996  ECC rho 0.9986  integer shift (0, 0)  affine t=(-0.79,-0.19) A=[1.011 +0.006; -0.001 1.005]
+  frame 380: NCC 0.999  ECC rho 0.9996  integer shift (0, 0)  affine t=(-0.35,+0.08) A=[1.006 +0.002; -0.000 0.998]
+  frame 381: NCC 1.000  ECC rho 1.0000  integer shift (0, 0)  affine t=(+0.00,+0.00) A=[1.000 +0.000; +0.000 1.000]
+  frame 382: NCC 0.999  ECC rho 0.9996  integer shift (0, 0)  affine t=(-0.36,+0.02) A=[1.005 +0.002; -0.001 1.000]
+  frame 383: NCC 0.993  ECC rho 0.9977  integer shift (0, 0)  affine t=(-0.72,+1.17) A=[1.006 +0.010; -0.014 0.992]
+  frame 384: NCC 0.988  ECC rho 0.9953  integer shift (0, 0)  affine t=(-0.94,+1.65) A=[1.009 +0.012; -0.013 0.981]
+  fused 9/9 frames (ECC rho >= 0.97)
+View B: reference frame 387, face centre (534, 188)
+  frame 385: NCC 0.970  ECC rho 0.9851  integer shift (1, -2)  affine t=(-0.01,-3.18) A=[0.978 +0.014; +0.037 1.044]
+  frame 386: NCC 0.982  ECC rho 0.9928  integer shift (0, -1)  affine t=(+1.19,-1.72) A=[0.995 -0.016; +0.015 1.028]
+  frame 387: NCC 1.000  ECC rho 1.0000  integer shift (0, 0)  affine t=(+0.00,+0.00) A=[1.000 +0.000; +0.000 1.000]
+  frame 388: NCC 0.983  ECC rho 0.9938  integer shift (0, 1)  affine t=(+0.71,-0.60) A=[0.995 -0.023; +0.024 0.999]
+  frame 389: NCC 0.974  ECC rho 0.9897  integer shift (0, 3)  affine t=(+0.51,-3.38) A=[0.994 -0.020; +0.073 1.013]
+  fused 5/5 frames (ECC rho >= 0.97)
+View C: reference frame 357, face centre (585, 187)
+  frame 356: NCC 0.981  ECC rho 0.9925  integer shift (0, 2)  affine t=(-0.32,+1.77) A=[0.994 +0.009; -0.023 0.973]
+  frame 357: NCC 1.000  ECC rho 1.0000  integer shift (0, 0)  affine t=(-0.00,-0.00) A=[1.000 -0.000; +0.000 1.000]
+  frame 358: NCC 0.990  ECC rho 0.9952  integer shift (0, -1)  affine t=(+0.68,-1.46) A=[1.008 -0.025; +0.031 0.996]
+  frame 359: NCC 0.989  ECC rho 0.9948  integer shift (0, -2)  affine t=(-0.19,+0.37) A=[1.009 -0.005; +0.002 0.995]
+  frame 360: NCC 0.987  ECC rho 0.9940  integer shift (0, -2)  affine t=(-0.43,+1.11) A=[1.018 -0.011; -0.009 0.981]
+  fused 5/5 frames (ECC rho >= 0.97)
