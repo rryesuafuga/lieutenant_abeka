@@ -3,13 +3,31 @@
 **Short answer to the README's question: yes.** For about 2.5 seconds (camera clock
 **01:26:41 – 01:26:43**) the suspect stands at the foot of the house steps and looks up
 toward the camera, and the face can be shown. The best images are below. All of them were
-made with classical, traceable image processing; no AI face-generation was used (see §4.4).
+made with classical, traceable image processing; no AI face-generation was used (see §4.5).
 
 ![Summary of the suspect images](output/suspect_summary.png)
 
 ## 1. Key images
 
-### Face
+### Face pictures and projected frontal face
+
+![Face pictures and projected frontal face](output/face/face_pictures.png)
+
+The **projected frontal face**
+([`output/face/projected_face_frontal.png`](output/face/projected_face_frontal.png)) is the best
+estimate of the face seen straight-on, framed like a passport photo. It was built from the
+13 frames (374–386) in which the suspect looks up at the camera, aligned to a fraction of a pixel
+and averaged. The suspect was facing the camera almost directly (head roll about 2°), so no
+rotation or 3-D warping was needed. See §4.4.
+
+* [`output/face/face_gallery.png`](output/face/face_gallery.png) shows the face in every second
+  frame from 330 to 398, each enhanced on its own. Seeing the face in many slightly different
+  frames helps people who know the person recognise them.
+* [`output/video/suspect_face_closeup.mp4`](output/video/suspect_face_closeup.mp4) keeps the face
+  centred (stabilised) at 6× zoom and one-third speed for frames 330–399, about 14 s. Familiar faces
+  are recognised more easily in motion.
+
+### Fused face views
 
 | A: looking up at the camera | B: head turned (three-quarter) | C: head slightly lowered |
 |:-:|:-:|:-:|
@@ -108,11 +126,35 @@ several times with different noise and slightly different sub-pixel positions. F
 4. A **robust per-pixel average** (trimmed mean) reduces noise and compression artefacts.
 5. Levels are set with no highlight clipping, followed by gamma 1.1 and a gentle unsharp mask.
 
-### 4.4 What was deliberately *not* done
+### 4.4 Projected frontal face ([`enhancement/face_projection.py`](enhancement/face_projection.py))
+Here "projected" means geometric: the face is shown upright, centred and straight-on. The steps are:
+
+1. The 13 frames 374–386, while the suspect looks up at the camera, are registered as in §4.3.
+   The lowest ECC correlation is 0.981. Averaging more frames than view A uses gives a cleaner
+   result with the same feature definition.
+2. The head's roll is measured from the principal axis of the IR-lit face. It is about 2°, and the
+   face is turned toward the camera, so the recorded view is already essentially frontal. The image
+   is **not** rotated, stretched or 3-D warped, because changing the face's proportions on the basis
+   of assumptions could change features that matter for identification.
+3. The result is framed 4:5 with the face centred, as in a passport photo. Levels are set as in
+   §4.3. A gentle large-radius unsharp mask (2.5 source pixels) makes the eye sockets, nose and mouth
+   shading easier to read; it only re-weights detail that is already present.
+
+The gallery and the face close-up follow the face frame by frame. Each frame is cut at the tracked
+face position and denoised with its two neighbours (3-frame non-local means). It is then enlarged
+(bicubic or Lanczos) and its levels are set.
+
+### 4.5 What was deliberately *not* done
 No generative "AI enhancement" was used: no GAN or diffusion face restoration such as GFPGAN or
 CodeFormer, and no learned face super-resolution. Those tools do not recover a face. They paint
 a plausible one, and they can produce a sharp, convincing face of **the wrong person**. Every pixel
 in these images is a resampled, averaged or tone-mapped version of pixels the camera recorded.
+
+For the same reason there is no AI-"projected" photo-realistic face. From about 27×33 pixels,
+such an image would mostly be invented: different runs or tools give faces that look like
+different people. Circulated as "the thief", it could lead to an innocent person being accused.
+If a clear likeness is needed for a public appeal, the police can commission a forensic artist or a
+facial composite from witnesses.
 
 ## 5. Limitations and recommendations
 
@@ -145,15 +187,23 @@ pip install -r enhancement/requirements.txt
 bash enhancement/run_all.sh
 ```
 
-`run_all.sh` runs `suspect_images.py` (faces, stills and summary, about 1 min) and
-`enhance_video.py` (both videos, about 10–15 min on 4 cores). Everything is deterministic and
-written to `output/`.
+`run_all.sh` runs three scripts, in this order:
+
+1. `suspect_images.py`: faces, stills and summary (about 1 min).
+2. `face_projection.py`: projected face, gallery and face close-up (under 1 min). It uses the face
+   views from step 1.
+3. `enhance_video.py`: the full and close-up videos (about 10–15 min on 4 cores).
+
+Everything is deterministic and written to `output/`.
 
 ## 7. Files
 
 | Path | Contents |
 |---|---|
 | `output/suspect_summary.png` | One-page overview: faces, clothing, timeline |
+| `output/face/face_pictures.png` | One sheet: projected frontal face, views A–C, single frames |
+| `output/face/projected_face_frontal.png` | Projected frontal face: 13 fused frames, passport framing |
+| `output/face/face_gallery.png` | The face in every second frame from 330 to 398 |
 | `output/face/face_{A,B,C}_*.png` | Multi-frame fused face images (8× enlargement) |
 | `output/face/face_enhancement_steps.png` | Recorded → levels → single frame → fused, for each view |
 | `output/stills/frame_NNNN.png` | Full frames, upright and enhanced, with caption bar |
@@ -161,5 +211,6 @@ written to `output/`.
 | `output/stills/shoes_taken_sequence.png` | Frames 393–399: the shoes being picked up |
 | `output/video/thief_video_enhanced.mp4` | Whole clip, upright and enhanced, original audio |
 | `output/video/suspect_closeup_slowmo.mp4` | Frames 245–410 at 2× zoom and half speed |
+| `output/video/suspect_face_closeup.mp4` | Face-stabilised close-up, frames 330–399, 6× zoom, ⅓ speed |
 | `output/registration_log.txt` | Alignment quality of every fused frame |
 | `enhancement/*.py` | The processing scripts |

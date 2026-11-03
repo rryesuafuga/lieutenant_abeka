@@ -9,9 +9,14 @@ the footage is turned the right way up and enhanced, the suspect's face is visib
 seconds, at camera clock 01:26:41–01:26:43 on 2026-10-31. During that time they stand at the foot
 of the house steps and look up toward the camera.
 
-| Looking up at the camera | Head turned | Head slightly lowered |
-|:-:|:-:|:-:|
-| ![Face A](output/face/face_A_looking_up.png) | ![Face B](output/face/face_B_three_quarter.png) | ![Face C](output/face/face_C_head_lowered.png) |
+| Projected frontal face (13 frames) | Looking up at the camera | Head turned | Head slightly lowered |
+|:-:|:-:|:-:|:-:|
+| ![Projected frontal face](output/face/projected_face_frontal.png) | ![Face A](output/face/face_A_looking_up.png) | ![Face B](output/face/face_B_three_quarter.png) | ![Face C](output/face/face_C_head_lowered.png) |
+
+All the face pictures are on one sheet in
+[output/face/face_pictures.png](output/face/face_pictures.png). The face in every second frame
+from 330 to 398 is in [output/face/face_gallery.png](output/face/face_gallery.png), and a stabilised, slowed-down face
+close-up is in [output/video/suspect_face_closeup.mp4](output/video/suspect_face_closeup.mp4).
 
 At 01:26:44 the suspect picks up a pair of shoes from the step and walks off with them
 ([image sequence](output/stills/shoes_taken_sequence.png)).

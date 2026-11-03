@@ -3,4 +3,5 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 python3 enhancement/suspect_images.py   # face fusion + stills + summary board (~1 min)
+python3 enhancement/face_projection.py  # projected frontal face, gallery, face close-up (<1 min; needs the above)
 python3 enhancement/enhance_video.py    # full enhanced video + close-up (~10-15 min on 4 cores)
